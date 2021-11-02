@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recruited</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;300&family=Sarabun:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -36,25 +40,37 @@
             </ul>
         </div>
     </nav>
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex;justify-content: center; padding: 2rem;">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-text">ผู้ที่ผ่านการคัดเลือก
+                </h1>
+                <table class="table table-responsive-lg" id="recruited_list">
+                    <thead class="thead-dark" style="justify-content: center;">
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>ตำแหน่งที่ต้องการสมัคร</th>
 
-        <div style="justify-content: center;">
-            <div>
-                <h1>Resume</h1>
-            </div>
-            <div class="card" style="width:900px">
-                <img class="card-img-top" src="announce.jpg" alt="Card image">
-                <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text.</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                </div>
+                        <thead>
+                        <tbody>
+                            <tr id="tr"></tr>
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>
-
-
-    <script src="CheckResume.js"></script>
+    <script src="RecruitedResume.js"></script>
 </body>
 
 </html>
+<style>
+    body{
+        font-family: 'Prompt', sans-serif;
+    }
+    .card {
+        width: 700px;
+    }
+
+    tr:hover {
+        background-color: rgb(204, 204, 204);
+    }
+</style>

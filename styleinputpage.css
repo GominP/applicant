@@ -1,0 +1,96 @@
+html, body{
+    background-color: #b5c891;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+.top-header{
+    background-color: #596347;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+.homepage-band{
+    color:#ffffff;
+    font-size: 16pt;
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+.homepage-item{
+    color: #ffffff;
+    font-size: 12pt;
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+.main-box{
+    max-width: 1200px;
+    margin: auto;
+}
+.box{
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.h1{
+    font-size: 30pt;
+    text-align: center;
+}
+.title{
+    font-size: 20pt;
+    text-align: center;
+}
+.form{
+    display: block;
+}
+a:hover {
+    background-color: #839169;
+    color :#000;
+  }
+.submit-button{
+    background-color: #b5c891;
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    margin: 10px;
+    border-radius: 7.5%;
+    border: 2px solid black;
+}
+.buttom-footer{
+    background-color: #839169;
+    text-align: center;
+    padding: 20pt;
+}
+.footer-title{
+    font-size: 12pt;
+    font-style: italic;
+}
+.footer-pre{
+    font-size: 9pt;
+}
+ul{
+    padding: 3rem;
+}
+li{
+    position: relative;
+    padding: 2rem ;
+
+}
+.del{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: indianred;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}

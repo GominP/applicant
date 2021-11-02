@@ -135,7 +135,7 @@ form.addEventListener('submit', (e) => {
                     birthdate: form.birthdate.value.toString(),
                     phone_number: form.phone_number.value,
                     address: form.address.value,
-                    role_positon: form.role_position.value,
+                    role_position: form.role_position.value,
                     check_pass: false,
                     intern: false,
                     resume_file: downloadUrl

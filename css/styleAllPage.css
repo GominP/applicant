@@ -1,0 +1,7 @@
+body {
+    font-family: "Prompt", sans-serif;
+}
+.navbar {
+    background: rgb(52, 152, 219);
+    background: linear-gradient(90deg, rgba(52, 152, 219, 1) 4%, rgba(132, 200, 246, 1) 83%);
+}

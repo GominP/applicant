@@ -2,6 +2,7 @@ body {
   font-family: "Prompt", sans-serif;
 }
 table {
+
   /* display: flex; */
   flex-flow: column;
   width: 100%;
@@ -10,7 +11,7 @@ table {
 
   display: block;
   justify-content: center;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 thead {

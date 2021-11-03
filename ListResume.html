@@ -12,6 +12,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="./css/styleAllPage.css">
     <link rel="stylesheet" href="./css/table.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +22,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">ATOS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,33 +57,38 @@
             </ul>
             <div class=" my-2 my-lg-0">
                 <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-                <button class="btn btn-outline-danger my-2 my-sm-0"  onclick="location.href='Login.html'">SignOut</button>
+                <button class="btn btn-outline-danger my-2 my-sm-0"
+                    onclick="location.href='Login.html'">SignOut</button>
             </div>
         </div>
     </nav>
     <div style="display: flex;justify-content: center; padding: 2rem;">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body ">
                 <h2 class="card-text">รายชื่อผู้ที่ส่งใบสมัคร</h2>
-                <table class="table table-striped" id="tbl_account_list">
-                    <thead class="thead-dark" style="justify-content: center;">
-                        <th>ชื่อ-นามสกุล</th>
-                        <th>ที่อยู่</th>
-                        <th>เบอร์โทรศัพท์</th>
-                        <th>ตำแหน่งที่ต้องการสมัคร</th>
-                        <th>Resume</th>
-                        <th>ผ่าน</th>
-                        <th>ปฎิเสธ</th>
+                <div>
+                    <table class="table table-striped  " id="tbl_account_list">
+                        <thead class="thead-dark" style="justify-content: center;">
+                            <th>ชื่อ-นามสกุล</th>
+                            <th>ที่อยู่</th>
+                            <th>เบอร์โทรศัพท์</th>
+                            <th>ตำแหน่งที่ต้องการสมัคร</th>
+                            <th>Resume</th>
+                            <th>ผ่าน</th>
+                            <th>ปฎิเสธ</th>
 
-                        <thead>
-                        <tbody>
-                            <tr id="tr"></tr>
-                        </tbody>
-                </table>
+                            <thead>
+                            <tbody>
+                                <tr id="tr"></tr>
+                            </tbody>
+                    </table>
+
+                </div>
+
             </div>
         </div>
     </div>
     <script src="ListResume.js"></script>
-
 </body>
+
 </html>

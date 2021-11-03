@@ -135,6 +135,8 @@ form.addEventListener('submit', (e) => {
                     birthdate: form.birthdate.value.toString(),
                     phone_number: form.phone_number.value,
                     address: form.address.value,
+                    address: form.email.value,
+
                     role_position: form.role_position.value,
                     check_pass: false,
                     intern: false,
@@ -143,6 +145,7 @@ form.addEventListener('submit', (e) => {
                     form.name.value = '';
                     form.sname.value = '';
                     form.cid.value = '';
+                    form.email.value = '';
                     form.birthdate.value = '';
                     form.address.value = '';
                     form.phone_number.value = '';

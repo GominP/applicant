@@ -16,6 +16,16 @@ const db = firebase.firestore();
 ShowResume()
 
 const accountList = document.querySelector('#tbl_account_list');
+const firstName = document.getElementById('Firstname')
+const gender = document.getElementById('Gender')
+const birthdate = document.getElementById('birthdate')
+const cid = document.getElementById('cid')
+const phoneNumber = document.getElementById('phoneNumber')
+const email = document.getElementById('email')
+const address = document.getElementById('address')
+const position_name = document.getElementById('role_position')
+
+
 function renderResume(doc) {
     let tr = document.createElement('tr');
     let td_full_name = document.createElement('td');
@@ -23,11 +33,14 @@ function renderResume(doc) {
     let td_phone_number = document.createElement('td');
     let td_role = document.createElement('td');
     let td_resume = document.createElement('td');
+    let td_info = document.createElement('td');
+
     let td_pass = document.createElement('td');
     let td_cancel = document.createElement('td');
 
     //btn
     let btn_resume = document.createElement('input');
+    let btn_info = document.createElement('input');
     let btn_pass = document.createElement('input');
     let btn_cancel = document.createElement('input');
 
@@ -53,6 +66,18 @@ function renderResume(doc) {
         );
     });
     td_resume.appendChild(btn_resume);
+
+    //btn_info
+    btn_info.type = "button";
+    btn_info.className = "btn btn-primary";
+    btn_info.value = "แสดงข้อมูล";
+    btn_info.onclick = ((e) => {
+        let id = tr.getAttribute('data-id', doc.id)
+        // console.log(doc)
+        showInfo(doc)
+
+    });
+    td_info.appendChild(btn_info);
 
     //btn_pass
     btn_pass.type = "button";
@@ -82,6 +107,7 @@ function renderResume(doc) {
     tr.appendChild(td_phone_number);
     tr.appendChild(td_role);
     tr.appendChild(td_resume);
+    tr.appendChild(td_info)
     tr.appendChild(td_pass);
     tr.appendChild(td_cancel);
 
@@ -109,6 +135,17 @@ function ShowResume() {
 
 }
 
+function showInfo(id) {
+    firstName.value = id.data().name
+    gender.value = id.data().gender
+    birthdate.value = id.data().birthdate
+    cid.value = id.data().cid
+    phoneNumber.value =id.data().phone_number
+    email.value = id.data().email
+    address.value = id.data().address
+    position_name.value = id.data().role_position
+}
+
 function changeStateCheckResume(id) {
     db.collection('users').doc(id).update({
         check_pass: true
@@ -121,7 +158,7 @@ function deleteResume(id) {
     db.collection('users').doc(id).delete();
 }
 
-function getOut(){
+function getOut() {
 
     window.location.replace("Login.html");
 }

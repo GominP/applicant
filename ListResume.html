@@ -62,33 +62,111 @@
             </div>
         </div>
     </nav>
-    <div style="display: flex;justify-content: center; padding: 2rem;">
-        <div class="card">
-            <div class="card-body ">
-                <h2 class="card-text">รายชื่อผู้ที่ส่งใบสมัคร</h2>
-                <div>
-                    <table class="table table-striped  " id="tbl_account_list">
-                        <thead class="thead-dark" style="justify-content: center;">
-                            <th>ชื่อ-นามสกุล</th>
-                            <th>ที่อยู่</th>
-                            <th>เบอร์โทรศัพท์</th>
-                            <th>ตำแหน่งที่ต้องการสมัคร</th>
-                            <th>Resume</th>
-                            <th>ผ่าน</th>
-                            <th>ปฎิเสธ</th>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <div style="display: flex;justify-content: center; padding: 2rem;">
+                    <div class="card">
+                        <div class="card-body ">
+                            <h2 class="card-text">รายชื่อผู้ที่ส่งใบสมัคร</h2>
+                            <div>
+                                <table class="table table-striped  " id="tbl_account_list">
+                                    <thead class="thead-dark" style="justify-content: center;">
+                                        <th>ชื่อ-นามสกุล</th>
+                                        <th>ที่อยู่</th>
+                                        <th>เบอร์โทรศัพท์</th>
+                                        <th>ตำแหน่งที่ต้องการสมัคร</th>
 
-                            <thead>
-                            <tbody>
-                                <tr id="tr"></tr>
-                            </tbody>
-                    </table>
+                                        <th>Resume</th>
+                                        <th>ข้อมูล</th>
 
+                                        <th>ผ่าน</th>
+                                        <th>ปฎิเสธ</th>
+
+                                        <thead>
+                                        <tbody>
+                                            <tr id="tr"></tr>
+                                        </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-
             </div>
-        </div>
-    </div>
-    <script src="ListResume.js"></script>
+            <div class="col-4">
+                <div style="display: flex; justify-content: center; padding: 2rem;">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h1 class="card-text">ข้อมูลส่วนตัว</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="">
+                                <div class="form-row col">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="Firstname" class="mb-1">ชื่อ-นามสกุล</label>
+                                        <input type="text" name="name" class="form-control" id="Firstname"
+                                            placeholder="ชื่อ" disabled>
+                                    </div>
+
+                                    <div class="form-group col-md-2 mb-3">
+                                        <label for="Gender" class="mb-1">เพศ</label>
+                                        <input type="text" name="gender" id="Gender" class="form-control"
+                                            placeholder="เพศ" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row col">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="birthdate" class="mb-1">วันเกิด</label>
+                                        <input type="text" name="birthdate" class="form-control" id="birthdate"
+                                            placeholder="วันเกิด" disabled>
+
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <label for="cid" class="mb-1">รหัสบัตรประชาชน</label>
+                                        <input type="text" name="cid" class="form-control" id="cid"
+                                            placeholder="รหัสบัตรประชาชน" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row col">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="phoneNumber" class="mb-1">เบอร์โทรศัพท์</label>
+                                        <input type="text" name="phoneNumber" class="form-control" id="phoneNumber"
+                                            placeholder="เบอร์โทรศัพท์" disabled>
+
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="email" class="mb-1">email</label>
+                                        <input type="text" name="email" class="form-control" id="email"
+                                            placeholder="email" disabled>
+
+
+                                    </div>
+
+
+                                    <div class="col-md-8 mb-3">
+                                        <label for="address" class="mb-1">ที่อยู่</label>
+                                        <textarea type="text" name="address" class="form-control" id="address"
+                                            placeholder="Add city" disabled></textarea>
+
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <label for="position_name" class="mb-1">ตำแหน่งที่ต้องการสมัคร</label>
+                                        <input type="text" name="role_position" class="form-control" id="position_name"
+                                            placeholder="ตำแหน่งที่ต้องการสมัคร" disabled>
+
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="ListResume.js"></script>
 </body>
 
 </html>

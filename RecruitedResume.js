@@ -17,7 +17,7 @@ const accountList = document.querySelector('#recruited_list');
 ShowResume()
 
 function ShowResume() {
-    db.collection('users').where('check_pass', '==', true).get().then(user => {
+    db.collection('users').where('check_pass', '==', true).where('intern', '==', false).get().then(user => {
         user.docs.forEach(doc => {
             console.log(doc.data())
             renderRescruit(doc)

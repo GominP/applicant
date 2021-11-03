@@ -1,0 +1,41 @@
+body {
+  font-family: "Prompt", sans-serif;
+}
+table {
+  /* display: flex; */
+  flex-flow: column;
+  width: 100%;
+  justify-content: center;
+  height: 600px;
+
+  display: block;
+  justify-content: center;
+  overflow: auto;
+}
+
+thead {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+tbody {
+    
+  flex: 1 1 auto;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+}
+
+tr {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+}
+tr:hover {
+  background-color: rgb(204, 204, 204);
+}
+.card {
+  width: 1600px;
+}

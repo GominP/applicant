@@ -111,7 +111,7 @@ form.addEventListener('submit', (e) => {
         != false || "") {
         let name = form.name.value + " " + form.sname.value
         console.log("Put File");
-        var storageRef = firebase.storage().ref(`img/${file.name}`);
+        var storageRef = firebase.storage().ref(`file/${file.name}`);
         var task = storageRef.put(file);
 
         task.on('state_changed', function progress(snapshot) {
@@ -124,7 +124,7 @@ form.addEventListener('submit', (e) => {
 
 
         }, function complete() {
-            storage.ref('img').child(file.name).getDownloadURL().then(url => {
+            storage.ref('file').child(file.name).getDownloadURL().then(url => {
                 console.log('File available at', url);
                 downloadUrl = url;
             }).then(() => {

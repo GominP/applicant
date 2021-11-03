@@ -10,9 +10,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -21,40 +18,97 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">ATOS</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">หน้าแรก <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ผู้ที่ผ่านการคัดเลือก</a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h1>Login</h1>
-            <input type="email" placeholder="email here" id="email"><br>
-            <input type="password" placeholder="password here" id="password"><br>
-            <button onclick="signUp()" id="signUp">SignUp</button>
-            <button onclick="signIn()" id="signIp">SignIn</button>
-            <button onclick="signOut()" id="signOut">SignOut</button>       
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex">
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+    
+                            <div class="form-floating mb-3">
+                                <label for="floatingInputEmail">Email address</label>
+                                <input type="email" class="form-control" id="email"
+                                    placeholder="Email">
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Password">
+                            </div>
+                            <hr>
+                            <!-- <div class="d-grid mb-2 text-center">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                                    type="submit" onclick="signUp()">Sign Up</button>
+                            </div> -->
+                            <div class="d-grid mb-2 text-center">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                                    type="submit" onclick="signIn()">Sign In</button>
+                            </div>
+                            <!-- <div class="d-grid mb-2 text-center">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                                    type="submit" onclick="signOut()">Sign Out</button>
+                            </div> -->
+                  
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="login.js"></script>
+    <!-- <div class="formContainer">
+        <h1>Enter Credentials Here:</h1>
+        <input type="email" placeholder="email here" id="email"><br>
+        <input type="password" placeholder="password here" id="password"><br>
+        <button onclick="signUp()" id="signUp">SignUp</button>
+        <button onclick="signIn()" id="signIp">SignIn</button>
+        <button onclick="signOut()" id="signOut">SignOut</button>
+    </div> -->
 
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyBqYbL7Zi6Gi8DMBVNZSrYc-ZkM5-g27JE",
+                authDomain: "applicant-9d5ca.firebaseapp.com",
+                projectId: "applicant-9d5ca",
+                storageBucket: "applicant-9d5ca.appspot.com",
+                messagingSenderId: "105254578536",
+                appId: "1:105254578536:web:34eb281d8c4abcb9244edd"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+        </script>
+        <script src="Login.js"></script>
 </body>
 
 </html>
+<style>
+    body {
+        background: #007bff;
+        background: linear-gradient(to right, #0062E6, #33AEFF);
+    }
+
+    .card-img-left {
+        width: 45%;
+        /* Link to your background image using in the property below! */
+        background: scroll center url('https://cdn.dribbble.com/users/4958643/screenshots/15061744/media/0c057ff8653d7813bce74c44dea1bb8c.jpg');
+        background-size: cover;
+    }
+
+    .btn-login {
+        font-size: 0.9rem;
+        letter-spacing: 0.05rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .btn-google {
+        color: white !important;
+        background-color: #ea4335;
+    }
+
+    .btn-facebook {
+        color: white !important;
+        background-color: #3b5998;
+    }
+</style>

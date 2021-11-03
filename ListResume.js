@@ -11,6 +11,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+
+
 ShowResume()
 
 const accountList = document.querySelector('#tbl_account_list');
@@ -47,8 +49,8 @@ function renderResume(doc) {
         // location.href = doc.data().resume_file
         window.open(
             doc.data().resume_file,
-            '_blank' // <- This is what makes it open in a new window.
-          );
+            "_self" // <- This is what makes it open in a new window.
+        );
     });
     td_resume.appendChild(btn_resume);
 
@@ -118,6 +120,12 @@ function changeStateCheckResume(id) {
 function deleteResume(id) {
     db.collection('users').doc(id).delete();
 }
+
+function getOut(){
+
+    window.location.replace("Login.html");
+}
+
 
 
 

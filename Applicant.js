@@ -106,17 +106,18 @@ form.addEventListener('submit', (e) => {
     // let cid = form.cid.value.toString()+"_resume"+file.name;
     // console.log(form.name.value && checkName.test(form.name.value) == true)
     // console.log( "บัตร" + checkCid.exec(form.cid.value))
-    if (form.name.value && checkName.test(form.name.value) == false || form.name.value == "") {
+    if (form.title_name.value == "") {
+        alert("กรุณาเลือกเพศ")
+    }
+    else if (form.name.value && checkName.test(form.name.value) == false || form.name.value == "") {
         alert("กรุณาใส่ชื่อให้ถูกต้อง")
     }
     else if (form.sname.value && checkName.test(form.sname.value) == false || form.sname.value == "") {
         alert("กรุณาใส่นามสกุลให้ถูกต้อง")
-
     }
 
     else if (form.gender.value == "") {
         alert("กรุณาเลือกเพศ")
-
     }
     else if (form.birthdate.value == "") {
         alert("กรุณาใส่วันเกิดให้ถูกต้อง")
@@ -142,7 +143,7 @@ form.addEventListener('submit', (e) => {
         alert("file")
     }
     else {
-        let name = form.name.value + " " + form.sname.value
+        let name = form.title_name.value+" "+ form.name.value + " " + form.sname.value
         console.log("Put File");
         var storageRef = firebase.storage().ref(`file/${file.name}`);
         var task = storageRef.put(file);

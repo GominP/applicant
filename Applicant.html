@@ -67,6 +67,18 @@
         <form id="addUser" class="needs-validation" novalidate>
           <div class="">
             <div class="form-row col">
+              <div class="form-group col-md-2 mb-3">
+                <label for="title_name" class="mb-1">คำนำหน้า</label>
+                <select class="custom-select" name="title_name" id="title_name" placeholder="คำนำหน้า" required>
+                  <option value="">เลือกคำนำหน้า</option>
+                  <option value="นาย">นาย</option>
+                  <option value="นาง">นาง</option>
+                  <option value="นางสาว">นางสาว</option>
+
+                </select>
+                <div class="invalid-feedback">กรุณาเลือกเพศ</div>
+              </div>
+              
               <div class="col-md-4 mb-3">
                 <label for="Firstname" class="mb-1">ชื่อ</label>
                 <input type="text" name="name" class="form-control" id="Firstname" placeholder="ชื่อ"
@@ -87,6 +99,8 @@
                   กรุณากรอกนามสกุล
                 </div>
               </div>
+            </div>
+            <div class="form-row col">
               <div class="form-group col-md-2 mb-3">
                 <label for="Gender" class="mb-1">เพศ</label>
                 <select class="custom-select" name="gender" id="Gender" placeholder="เพศ" required>
@@ -96,8 +110,6 @@
                 </select>
                 <div class="invalid-feedback">กรุณาเลือกเพศ</div>
               </div>
-            </div>
-            <div class="form-row col">
               <div class="col-md-4 mb-3">
                 <label for="Firstname" class="mb-1">วันเกิด</label>
                 <div class="input-group date" id="datepicker">

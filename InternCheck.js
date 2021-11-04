@@ -69,7 +69,7 @@ function renderIntern(doc) {
 }
 
 function ShowIntern() {
-    db.collection('users').where('check_pass', '==', true).onSnapshot(snapshot => {
+    db.collection('applicant').where('check_pass', '==', true).where('interview_pass', '==', true).where('intern', '==', false).onSnapshot(snapshot => {
         let changes = snapshot.docChanges();
         changes.forEach(change => {
             if (change.type == 'added') {
@@ -89,15 +89,25 @@ function ShowIntern() {
 }
 
 function changeStateCheckIntern(id) {
-    db.collection('users').doc(id).update({
+    db.collection('applicant').doc(id).update({
         intern: true
     })
     console.log("Edited")
+    alert("บันทึกข้อมูลเสร็จสิ้น")
+
 }
 
-
 function deleteResume(id) {
-    db.collection('users').doc(id).delete();
+    console.log(id)
+    db.collection('Contract').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            if (doc.data().contract_id == id) {
+                db.collection('Contract').doc(doc.id).delete()
+            }
+        })
+    })
+    db.collection('applicant').doc(id).delete();
+    alert("ยกเลิกเสร็จสิ้น")
 }
 
 function getOut(){

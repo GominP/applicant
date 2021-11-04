@@ -10,10 +10,11 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const applicant_db = db.collection('applicant');
 
 
 
-ShowResume()
+ShowContract()
 
 const accountList = document.querySelector('#tbl_account_list');
 const firstName = document.getElementById('Firstname')
@@ -24,23 +25,26 @@ const phoneNumber = document.getElementById('phoneNumber')
 const email = document.getElementById('email')
 const address = document.getElementById('address')
 const role_position = document.getElementById('role_position')
+const interview_date = document.getElementById('interview_date')
+const interview_time = document.getElementById('interview_time')
 
-const time = document.getElementById('time')
+const contract_number = document.getElementById('contract_number')
+const salary = document.getElementById('salary')
+
+
 const datepicker = document.getElementById('datepicker')
 
-
-const resume_button = document.getElementById('resume_button')
-const resume_pass = document.getElementById('resume_pass')
-const resume_cancel = document.getElementById('resume_cancel')
-
-
-let doc_download = "" ;
-let doc_pass_resume = "";
-let doc_cancel_resume = "";
+const resume_contract_button = document.getElementById('resume_contract_button')
+const contract_pass = document.getElementById('contract_pass')
+const contract_cancel = document.getElementById('contract_cancel')
 
 
+let doc_download = "";
+let doc_pass_contract = "";
+let doc_cancel_contract = "";
 
-function renderResume(doc) {
+
+function renderContract(doc) {
     let tr = document.createElement('tr');
     // tr.className="tr-t";
     let td_full_name = document.createElement('td');
@@ -50,37 +54,24 @@ function renderResume(doc) {
     td_role.style = "text-align: center;"
     let td_info = document.createElement('td');
 
-    // let td_pass = document.createElement('td');
-    // let td_cancel = document.createElement('td');
-
     //btn
-    // let btn_resume = document.createElement('input');
     let btn_info = document.createElement('input');
-    // let btn_pass = document.createElement('input');
-    // let btn_cancel = document.createElement('input');
 
     //set id from firebase
     tr.setAttribute('data-id', doc.id);
+    // id = doc.data().contract_id
+    // console.log(doc.id);
+
+    // let applicant_info = getFromApplicant(id).data()
+
+
     td_full_name.textContent = doc.data().name;
     td_address.textContent = doc.data().address;
     td_phone_number.textContent = doc.data().phone_number;
     td_role.textContent = doc.data().role_position
 
 
-    // //btn_resume
-    // btn_resume.type = "button";
-    // btn_resume.className = "btn btn-primary";
-    // btn_resume.value = "Download";
-    // btn_resume.onclick = ((e) => {
-    //     let id = tr.getAttribute('data-id', doc.id)
-    //     console.log(doc.data().resume_file)
-    //     // location.href = doc.data().resume_file
-    //     window.open(
-    //         doc.data().resume_file,
-    //         "_self" // <- This is what makes it open in a new window.
-    //     );
-    // });
-    // td_resume.appendChild(btn_resume);
+
 
     //btn_info
     btn_info.type = "button";
@@ -89,35 +80,13 @@ function renderResume(doc) {
     btn_info.onclick = ((e) => {
         let id = tr.getAttribute('data-id', doc.id)
         doc_download = doc.data().resume_file
-        doc_cancel_resume = doc.id
-        doc_pass_resume = doc.id
+        doc_cancel_contract = doc.id
+        doc_pass_contract = doc.id
         showInfo(doc)
 
     });
     td_info.appendChild(btn_info);
 
-    // //btn_pass
-    // btn_pass.type = "button";
-    // btn_pass.className = "btn btn-success";
-    // btn_pass.value = "Check";
-    // btn_pass.onclick = ((e) => {
-    //     let id = tr.getAttribute('data-id', doc.id)
-    //     console.log(doc.data().resume_file)
-    //     changeStateCheckResume(id)
-    // });
-    // td_pass.appendChild(btn_pass);
-
-
-    // //btn_cancel
-    // btn_cancel.type = "button";
-    // btn_cancel.className = "btn btn-danger";
-    // btn_cancel.value = "Decline";
-    // btn_cancel.onclick = ((e) => {
-    //     let id = tr.getAttribute('data-id', doc.id)
-    //     console.log(doc.data().resume_file)
-    //     deleteResume(id)
-    // });
-    // td_cancel.appendChild(btn_cancel);
 
     tr.appendChild(td_full_name);
     tr.appendChild(td_address);
@@ -131,12 +100,12 @@ function renderResume(doc) {
     accountList.appendChild(tr);
 }
 
-function ShowResume() {
-    db.collection('applicant').where('check_pass', '==', false).onSnapshot(snapshot => {
+function ShowContract() {
+    db.collection('applicant').where('check_pass', '==', true).where('interview_pass', '==', false).onSnapshot(snapshot => {
         let changes = snapshot.docChanges();
         changes.forEach(change => {
             if (change.type == 'added') {
-                renderResume(change.doc);
+                renderContract(change.doc);
             }
             else if (change.type == 'modified') {
                 let td = accountList.querySelector(`[data-id=${change.doc.id}]`);
@@ -156,87 +125,98 @@ function showInfo(id) {
     gender.value = id.data().gender
     birthdate.value = id.data().birthdate
     cid.value = id.data().cid
-    phoneNumber.value =id.data().phone_number
+    phoneNumber.value = id.data().phone_number
     email.value = id.data().email
     address.value = id.data().address
     role_position.value = id.data().role_position
+    interview_date.value = id.data().interview_date
+    interview_time.value = id.data().interview_time
+
 }
 
-resume_button.addEventListener('click',(e)=>{
+resume_contract_button.addEventListener('click', (e) => {
     if (doc_download != "") {
         window.open(
             doc_download,
             "_blank"
         );
     }
-    else{
+    else {
         console.log("failed")
         alert("กรุณาเลือกใบสมัคร");
     }
 })
 
-resume_pass.addEventListener('click',(e)=>{
-    console.log(doc_pass_resume)
-    console.log(doc_cancel_resume)
-    console.log(time.value)
-    console.log(datepicker.value)
-    if (doc_pass_resume == "") {
+contract_pass.addEventListener('click', (e) => {
+    console.log(contract_number.value)
+    console.log(doc_pass_contract)
+
+    if (doc_pass_contract == "") {
         alert("กรุณาเลือกใบสมัคร")
-        
+
     }
-    else if(datepicker.value == ""){
+    else if(contract_number.value == ""){
+        alert("กรุณาใส่เลขสัญญา");
+    }
+    else if(salary.value == ""){
+        alert("กรุณาใส่เงินเดือน");
+
+    }
+    else if (datepicker.value == "") {
         alert("กรุณาใส่วันเพื่อนัดสัมภาษณ์");
-
-        
-    }else{
-        changeStateCheckResume(doc_pass_resume)
+    } else {
+        changeStateCheckContract(doc_pass_contract)
     }
-    datepicker.value = ""
+
 
 })
 
-resume_cancel.addEventListener('click',(e)=>{
-    console.log(doc_cancel_resume)
-    if(doc_cancel_resume == ""){
+contract_cancel.addEventListener('click', (e) => {
+    console.log(doc_cancel_contract)
+    if (doc_cancel_contract == "") {
         alert("กรุณาเลือกใบสมัคร")
     }
-    else{
-        deleteResume(doc_cancel_resume)
+    
+    else {
+        deleteResumeAndContract(doc_cancel_contract)
     }
 })
 
-function changeStateCheckResume(id) {
-    db.collection('applicant').doc(id).update({
-        check_pass: true,
-        interview_date: datepicker.value.toString(),
-        interview_time: time.value,
-        contract: id
+function changeStateCheckContract() {
+    db.collection('Contract').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            if (doc.data().contract_id == doc_pass_contract) {
+                db.collection('Contract').doc(doc.id).update({
+                    contract_number: contract_number.value.toString(),
+                    contract_pass: true,
+                    salary: salary.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    start_date: datepicker.value.toString()
+                });
+            }
+        })
     })
-    db.collection('Contract').add({
-        contract_id: id,
-        contract_pass: false,
-        contract_number: "",
-        salary: "",
-        start_date: "",
+
+     applicant_db.doc(doc_pass_contract).update({
+        interview_pass: true
     })
-    console.log("Edited")
-    alert("เสร็จสิ้น")
+    alert("บันทึกข้อมูลเรียบร้อย")
 
 }
 
 
-function deleteResume(id) {
+function deleteResumeAndContract(id) {
     db.collection('applicant').doc(id).delete();
+    db.collection('Contract').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            if (doc.data().contract_id == doc_pass_contract) {
+                db.collection('Contract').doc(doc.id).delete()
+            }
+        })
+    })
     alert("ยกเลิกใบสมัครเสร็จสิ้น")
 
 }
 
 function getOut() {
-
     window.location.replace("Login.html");
 }
-
-
-
-
-

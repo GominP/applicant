@@ -161,7 +161,7 @@ form.addEventListener('submit', (e) => {
                 console.log('File available at', url);
                 downloadUrl = url;
             }).then(() => {
-                db.collection('users').add({
+                db.collection('applicant').add({
                     name: name,
                     cid: form.cid.value,
                     gender: form.gender.value,
@@ -174,7 +174,9 @@ form.addEventListener('submit', (e) => {
                     intern: false,
                     resume_file: downloadUrl,
                     interview_date: "",
-                    interview_time: ""
+                    interview_time: "",
+                    interview_pass: false
+
 
                 }).then(() => {
                     form.name.value = '';

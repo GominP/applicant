@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
+    <title>Contract</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -69,7 +69,7 @@
                 <div style="display: flex;justify-content: center; padding: 2rem;">
                     <div class="card">
                         <div class="card-body ">
-                            <h2 class="card-text">รายชื่อผู้ที่ส่งใบสมัคร</h2>
+                            <h2 class="card-text">รายชื่อผู้มีสิทธิ์สัมภาษณ์</h2>
                             <div>
                                 <table class="table table-striped" style="height: 500px;" id="tbl_account_list">
                                     <thead class="thead-dark " style="justify-content: center;">
@@ -95,10 +95,34 @@
                 <div style="display: flex; justify-content: center; padding: 2rem;">
                     <div class="card border-primary mb-3">
                         <div class="card-header text-center">
-                            <h1 class="card-text">ข้อมูลใบสมัคร</h1>
+                            <h1 class="card-text">ข้อมูลใบสมัครของผู้ถูกสัมภาษณ์</h1>
                         </div>
                         <div class="card-body">
                             <div class="">
+                                <div class="form-row col">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="contract_number" class="mb-1">เลขที่สัญญา</label>
+                                        <input type="text" name="contract_number" class="form-control"
+                                            id="contract_number" placeholder="เลขที่สัญญา">
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <label for="salary" class="mb-1">เงินเดือน</label>
+                                        <input type="number" name="salary" class="form-control" id="salary"
+                                            placeholder="เงินเดือน" >
+                                    </div>
+                                </div>
+                                <div class="form-row col">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="datepicker" class="mb-1">วันที่เริ่มงาน</label>
+                                        <input type="text" name="datepicker" class="form-control" id="datepicker"
+                                            placeholder="วันที่เริ่มงาน" required>
+                                    </div>
+                                    <div class="col-md-5 mb-3">
+                                        <label for="position_name" class="mb-1">ตำแหน่งที่ต้องการสมัคร</label>
+                                        <input type="text" name="role_position" class="form-control" id="role_position"
+                                            placeholder="ตำแหน่งที่ต้องการสมัคร" disabled>
+                                    </div>
+                                </div>
                                 <div class="form-row col">
                                     <div class="col-md-8 mb-3">
                                         <label for="Firstname" class="mb-1">ชื่อ-นามสกุล</label>
@@ -130,7 +154,6 @@
                                         <label for="phoneNumber" class="mb-1">เบอร์โทรศัพท์</label>
                                         <input type="text" name="phoneNumber" class="form-control" id="phoneNumber"
                                             placeholder="เบอร์โทรศัพท์" disabled>
-
                                     </div>
                                     <div class="col-md-8 mb-3">
                                         <label for="email" class="mb-1">email</label>
@@ -141,49 +164,33 @@
                                         <label for="address" class="mb-1">ที่อยู่</label>
                                         <textarea type="text" name="address" class="form-control" id="address"
                                             placeholder="ที่อยู่" disabled></textarea>
-
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <label for="position_name" class="mb-1">ตำแหน่งที่ต้องการสมัคร</label>
-                                        <input type="text" name="role_position" class="form-control" id="role_position"
-                                            placeholder="ตำแหน่งที่ต้องการสมัคร" disabled>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                     </div>
                                 </div>
                                 <div class="col-md-5 mb-3">
-                                    <button type="button" id="resume_button" name="resume_button"
+                                    <button type="button" id="resume_contract_button" name="resume_contract_button"
                                         class="btn btn-primary">Download Resume</button>
                                 </div>
                             </div>
                             <div class="form-row col">
                                 <div class="col-md-4 mb-3">
-                                    <label for="datepicker">นัดวันเพื่อสัมภาษณ์</label>
-                                    <input type="text" name="datepicker" class="form-control" id="datepicker"
-                                        placeholder="วันสัมภาษณ์">
+                                    <label for="interview_date">นัดวันเพื่อสัมภาษณ์</label>
+                                    <input type="text" name="interview_date" class="form-control" id="interview_date"
+                                        placeholder="วันสัมภาษณ์" disabled>
                                 </div>
                                 <div class="col-md-5 mb-3">
-                                    <label for="datepicker">เวลา</label>
-                                    <select class="form-control" id="time" name="time">
-                                        <option>9.00 น.</option>
-                                        <option>10.00 น.</option>
-                                        <option>11.00 น.</option>
-                                        <option>12.00 น.</option>
-                                        <option>13.00 น.</option>
-                                        <option>14.00 น.</option>
-                                        <option>15.00 น.</option>
-                                        <option>16.00 น.</option>
-                                        <option>17.00 น.</option>
-                                        <option>18.00 น.</option>
-                                    </select>
+                                    <label for="interview_time">เวลา</label>
+                                    <input type="text" class="form-control" id="interview_time" name="interview_time"
+                                        disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer" style="display: flex; justify-content: space-between;">
-                            <button type="button" class="btn btn-outline-danger" id="resume_cancel"
-                                name="resume_cancel">ยกเลิกใบสมัคร</button>
-                            <button type="button" class="btn btn-outline-success" id="resume_pass"
-                                name="resume_pass">ผ่าน</button>
+                            <button type="button" class="btn btn-outline-danger" id="contract_cancel"
+                                name="contract_cancel">ยกเลิกใบสมัคร</button>
+                            <button type="button" class="btn btn-outline-success" id="contract_pass"
+                                name="contract_pass">ผ่าน</button>
                         </div>
                     </div>
                 </div>
@@ -201,7 +208,7 @@
     </script>
 
 
-    <script src="ListResume.js"></script>
+    <script src="ContractPage.js"></script>
 </body>
 
 </html>
@@ -214,6 +221,7 @@
         flex: 0 0 auto;
         text-align: center;
     }
+
     table {
         flex-flow: column;
         width: 100%;
@@ -221,5 +229,4 @@
         display: block;
         overflow-y: auto;
     }
-
 </style>

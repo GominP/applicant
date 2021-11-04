@@ -166,11 +166,12 @@ resume_button.addEventListener('click',(e)=>{
     if (doc_download != "") {
         window.open(
             doc_download,
-            "_self"
+            "_blank"
         );
     }
     else{
         console.log("failed")
+        alert("กรุณาเลือกใบสมัคร");
     }
 })
 

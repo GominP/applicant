@@ -105,8 +105,6 @@ form.addEventListener('submit', (e) => {
     let checkEmail = new RegExp('^[a-zA-Z0-9.]{3,}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')
     // let cid = form.cid.value.toString()+"_resume"+file.name;
     // console.log(checkPhone.test(form.phone_number.value))
-    console.log(form.cid.value)
-    console.log(checkEmail.test(form.email.value))
     if (checkName.test(form.name.value) || checkName.test(form.sname.value) || form.birthdate.value || form.cid.value || form.role_position.value || checkPhone.test(form.phone_number.value)
         != false || "") {
         let name = form.name.value + " " + form.sname.value
@@ -121,7 +119,6 @@ form.addEventListener('submit', (e) => {
             document.getElementsByClassName('progress-bar').item(0).setAttribute('style', 'width:' + Number(percentage) + '%');
 
         }, function error(err) {
-
 
         }, function complete() {
             storage.ref('file').child(file.name).getDownloadURL().then(url => {
@@ -157,7 +154,29 @@ form.addEventListener('submit', (e) => {
             })
         })
     }
+    else{
+        console.log("Invalid Somthing")
+        console.log("Email "+ checkEmail.test(form.email.value))
+        console.log("Name "+ checkName.test(form.name.value))
+        console.log("S name "+ checkName.test(form.sname.value))
+        return false;
+
+    }
 });
+
+function clerInfo() {
+    form.name.value = '';
+    form.sname.value = '';
+    form.gender.value = "";
+    form.cid.value = '';
+    form.email.value = '';
+    form.birthdate.value = '';
+    form.address.value = '';
+    form.phone_number.value = '';
+    form.role_position.value = '';
+    fileName.textContent = "Choose File";
+    file = '';
+}
 
 
 // db.collection('users').onSnapshot(snapshot => {

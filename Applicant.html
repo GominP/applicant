@@ -27,7 +27,7 @@
     integrity="sha512-cp+S0Bkyv7xKBSbmjJR0K7va0cor7vHYhETzm2Jy//ZTQDUvugH/byC4eWuTii9o5HN9msulx2zqhEXWau20Dg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <link rel="stylesheet" href="./css/styleAllPage.css">
+  <link rel="stylesheet" href="./css/styleAllPage.css">
 
 
 
@@ -44,19 +44,19 @@
           <span class="navbar-toggler-icon"></span>
         </button> -->
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">หน้าแรก <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="RecruitedResume.html">รายชื่อผู้ที่ผ่านการคัดเลือก</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Applicant.html">กรอกใบสมัคร</a>
-            </li>
-        </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">หน้าแรก <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="RecruitedResume.html">รายชื่อผู้ที่ผ่านการคัดเลือก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Applicant.html">กรอกใบสมัคร</a>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
   <div style="display: flex; justify-content: center; padding: 2rem;">
     <div class="card">
@@ -69,7 +69,8 @@
             <div class="form-row col">
               <div class="col-md-4 mb-3">
                 <label for="Firstname" class="mb-1">ชื่อ</label>
-                <input type="text" name="name" class="form-control" id="Firstname" placeholder="ชื่อ" required>
+                <input type="text" name="name" class="form-control" id="Firstname" placeholder="ชื่อ"
+                  pattern="^[a-zA-Z]+$" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -78,7 +79,8 @@
               </div>
               <div class="col-md-5 mb-3">
                 <label for="Lastname" class="mb-1">นามสกุล</label>
-                <input type="text" name="sname" class="form-control" id="Lastname" placeholder="นามสกุล" required>
+                <input type="text" name="sname" class="form-control" id="Lastname" placeholder="นามสกุล"
+                  pattern="^[a-zA-Z]+$" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -87,26 +89,33 @@
               </div>
               <div class="form-group col-md-2 mb-3">
                 <label for="Gender" class="mb-1">เพศ</label>
-                <select class="form-control" name="gender" id="Gender">
+                <select class="custom-select" name="gender" id="Gender" placeholder="เพศ" required>
+                  <option value="">เลือกเพศ</option>
                   <option value="ชาย">ชาย</option>
                   <option value="หญิง">หญิง</option>
                 </select>
+                <div class="invalid-feedback">กรุณาเลือกเพศ</div>
               </div>
             </div>
             <div class="form-row col">
               <div class="col-md-4 mb-3">
                 <label for="Firstname" class="mb-1">วันเกิด</label>
                 <div class="input-group date" id="datepicker">
-                  <input type="text" class="form-control" name="birthdate">
+                  <input type="text" class="form-control" name="birthdate" required>
                   <div class="input-group-addon">
                     <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                  <div class="valid-feedback">
+                  </div>
+                  <div class="invalid-feedback">
+                    กรุณากรอกวันเกิด
                   </div>
                 </div>
               </div>
               <div class="col-md-8 mb-3">
-                <label for="validationCity" class="mb-1">รหัสบัตรประชาชน</label>
-                <input type="number" name="cid" class="form-control" id="validationCity" placeholder="รหัสบัตรประชาชน"
-                  required>
+                <label for="validationCid" class="mb-1">รหัสบัตรประชาชน</label>
+                <input type="text" name="cid" class="form-control" id="validationCid" placeholder="รหัสบัตรประชาชน"
+                  pattern="^[0-9]*$" minlength="13" maxlength="13" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -118,7 +127,7 @@
               <div class="col-md-4 mb-3">
                 <label for="Lastname" class="mb-1">เบอร์โทรศัพท์</label>
                 <input type="text" name="phone_number" class="form-control" id="Lastname" placeholder="เบอร์โทรศัพท์"
-                  required>
+                  pattern="^[0-9]*$" minlength="10" maxlength="10" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -127,7 +136,9 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label for="Firstname" class="mb-1">email</label>
-                <input type="text" name="email" class="form-control" id="Firstname" placeholder="email" required>
+                <input type="text" name="email" class="form-control" id="Firstname" placeholder="email" 
+                pattern="^[a-zA-Z0-9.]{3,}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -152,7 +163,7 @@
           <div class="col-md-5 mb-3">
             <label for="position_name" class="mb-1">ตำแหน่งที่ต้องการสมัคร</label>
             <input type="text" name="role_position" class="form-control" id="position_name"
-              placeholder="ตำแหน่งที่ต้องการสมัคร" required>
+              placeholder="ตำแหน่งที่ต้องการสมัคร" pattern="^[a-zA-Z]+$" required>
             <div class="valid-feedback">
             </div>
             <div class="invalid-feedback">
@@ -160,7 +171,7 @@
             </div>
           </div>
           <div class="col-md-12 mb-3">
-            <label for="fileButton" class="mb-1">อัปโหลดไฟล์</label>
+            <label for="fileButton" class="mb-1">อัปโหลดไฟล์ Resume</label>
             <div class="custom-file">
               <input type="file" class="custom-file-input" id="fileButton" value="upload" required>
               <div class="invalid-feedback">กรุณาใส่ Resume</div>
@@ -176,6 +187,8 @@
 
           <button class="btn btn-success col-md-12 mb-3">ส่งใบสมัคร</button>
         </form>
+        <button class="btn btn-outline-danger col-md-12 mb-3" onclick="clerInfo()">ยกเลิกใบสมัคร</button>
+
 
       </div>
     </div>

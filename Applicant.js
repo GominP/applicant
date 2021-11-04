@@ -136,11 +136,13 @@ form.addEventListener('submit', (e) => {
                     phone_number: form.phone_number.value,
                     address: form.address.value,
                     email: form.email.value,
-
                     role_position: form.role_position.value,
                     check_pass: false,
                     intern: false,
-                    resume_file: downloadUrl
+                    resume_file: downloadUrl,
+                    interview_date: "",
+                    interview_time: ""
+
                 }).then(() => {
                     form.name.value = '';
                     form.sname.value = '';
@@ -151,7 +153,7 @@ form.addEventListener('submit', (e) => {
                     form.phone_number.value = '';
                     form.role_position.value = '';
                     fileName.textContent = "Choose File";
-                })
+                }).then(() => { location.href = "SuccessForm.html" })
             })
         })
     }

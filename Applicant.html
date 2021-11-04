@@ -70,7 +70,7 @@
               <div class="col-md-4 mb-3">
                 <label for="Firstname" class="mb-1">ชื่อ</label>
                 <input type="text" name="name" class="form-control" id="Firstname" placeholder="ชื่อ"
-                  pattern="^[a-zA-Z]+$" required>
+                  pattern="^[ก-๏a-zA-Z]*$" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -80,7 +80,7 @@
               <div class="col-md-5 mb-3">
                 <label for="Lastname" class="mb-1">นามสกุล</label>
                 <input type="text" name="sname" class="form-control" id="Lastname" placeholder="นามสกุล"
-                  pattern="^[a-zA-Z]+$" required>
+                  pattern="^[ก-๏a-zA-Z]*$" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -115,7 +115,7 @@
               <div class="col-md-8 mb-3">
                 <label for="validationCid" class="mb-1">รหัสบัตรประชาชน</label>
                 <input type="text" name="cid" class="form-control" id="validationCid" placeholder="รหัสบัตรประชาชน"
-                  pattern="^[0-9]*$" minlength="13" maxlength="13" required>
+                  pattern="^(\d{13})?$" minlength="0" maxlength="13" required>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -163,7 +163,7 @@
           <div class="col-md-5 mb-3">
             <label for="position_name" class="mb-1">ตำแหน่งที่ต้องการสมัคร</label>
             <input type="text" name="role_position" class="form-control" id="position_name"
-              placeholder="ตำแหน่งที่ต้องการสมัคร" pattern="^[a-zA-Z]+$" required>
+              placeholder="ตำแหน่งที่ต้องการสมัคร" pattern="^^[ก-๏a-zA-Z\s]*$" required>
             <div class="valid-feedback">
             </div>
             <div class="invalid-feedback">

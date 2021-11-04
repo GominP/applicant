@@ -100,13 +100,48 @@ fileButton.addEventListener('change', function (e) {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    let checkName = new RegExp('^[a-zA-Z]+$')
+    let checkName = new RegExp('^[ก-๏a-zA-Z]*$')
     let checkPhone = new RegExp('(^(?:[+0]9)?[0-9]{10,12}$)');
     let checkEmail = new RegExp('^[a-zA-Z0-9.]{3,}@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$')
     // let cid = form.cid.value.toString()+"_resume"+file.name;
-    // console.log(checkPhone.test(form.phone_number.value))
-    if (checkName.test(form.name.value) || checkName.test(form.sname.value) || form.birthdate.value || form.cid.value || form.role_position.value || checkPhone.test(form.phone_number.value)
-        != false || "") {
+    // console.log(form.name.value && checkName.test(form.name.value) == true)
+    // console.log( "บัตร" + checkCid.exec(form.cid.value))
+    if (form.name.value && checkName.test(form.name.value) == false || form.name.value == "") {
+        alert("กรุณาใส่ชื่อให้ถูกต้อง")
+    }
+    else if (form.sname.value && checkName.test(form.sname.value) == false || form.sname.value == "") {
+        alert("กรุณาใส่นามสกุลให้ถูกต้อง")
+
+    }
+
+    else if (form.gender.value == "") {
+        alert("กรุณาเลือกเพศ")
+
+    }
+    else if (form.birthdate.value == "") {
+        alert("กรุณาใส่วันเกิดให้ถูกต้อง")
+
+    }
+    else if (form.cid.value.length < 13 || form.cid.value == "") {
+        alert("กรุณาใส่เลขบัตรประชาชนให้ถูกต้อง")
+
+    }
+    else if (form.cid.value.length < 10 || checkPhone.test(form.phone_number.value) == false) {
+        alert("กรุณาใส่เลขเบอร์โทรศัพท์ให้ถูกต้อง")
+    }
+    else if (checkEmail.test(form.email.value) == false) {
+        alert("กรุณาใส่ email ให้ถูกต้อง")
+    }
+    else if (form.address.value == "") {
+        alert("กรุณาใส่ที่อยู่ให้ถูกต้อง")
+    }
+    else if (form.role_position.value == "") {
+        alert("กรุณาใส่ตำแหน่งที่ต้องการสมัครให้ถูกต้อง")
+    }
+    else if (file.name == "") {
+        alert("file")
+    }
+    else {
         let name = form.name.value + " " + form.sname.value
         console.log("Put File");
         var storageRef = firebase.storage().ref(`file/${file.name}`);
@@ -153,13 +188,7 @@ form.addEventListener('submit', (e) => {
                 }).then(() => { location.href = "SuccessForm.html" })
             })
         })
-    }
-    else{
-        console.log("Invalid Somthing")
-        console.log("Email "+ checkEmail.test(form.email.value))
-        console.log("Name "+ checkName.test(form.name.value))
-        console.log("S name "+ checkName.test(form.sname.value))
-        return false;
+
 
     }
 });

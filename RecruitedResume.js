@@ -31,6 +31,8 @@ function renderRescruit(doc) {
     // let td_cid = document.createElement('td');
     let td_full_name = document.createElement('td');
     let td_role = document.createElement('td');
+    let td_date = document.createElement('td');
+
 
 
     //set id from firebase
@@ -38,11 +40,13 @@ function renderRescruit(doc) {
     td_full_name.textContent = doc.data().name;
     // td_address.textContent = doc.data().cid;
     td_role.textContent = doc.data().role_position
-
+    td_date.textContent = doc.data().interview_date +"  "+ doc.data().interview_time
 
     tr.appendChild(td_full_name);
     // tr.appendChild(td_cid);
     tr.appendChild(td_role);
+    tr.appendChild(td_date);
+
 
 
 

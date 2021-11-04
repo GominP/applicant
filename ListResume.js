@@ -211,11 +211,15 @@ function changeStateCheckResume(id) {
         interview_time: time.value
     })
     console.log("Edited")
+    alert("เสร็จสิ้น")
+
 }
 
 
 function deleteResume(id) {
     db.collection('users').doc(id).delete();
+    alert("ยกเลิกใบสมัครเสร็จสิ้น")
+
 }
 
 function getOut() {
